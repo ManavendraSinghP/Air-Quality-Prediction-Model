@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AQI Prediction System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Air Quality Index Prediction</h1>
+            <p>Compare predicted AQI with real-time data</p>
+        </header>
+
+        <main>
+            <section class="input-section">
+                <h2>Enter Location</h2>
+                <form id="aqi-form">
+                    <div class="form-group">
+                        <label for="location">City Name:</label>
+                        <input type="text" id="location" name="location" placeholder="Enter city name" required>
+                    </div>
+                    <button type="submit">Get AQI Data</button>
+                </form>
+            </section>
+
+            <section class="results-section" id="results" style="display: none;">
+                <h2>AQI Comparison Results</h2>
+                <div class="result-card">
+                    <h3>Location: <span id="result-location"></span></h3>
+                    <div class="aqi-comparison">
+                        <div class="aqi-value predicted">
+                            <h4>Predicted AQI</h4>
+                            <div class="value" id="predicted-aqi">-</div>
+                            <div class="category" id="predicted-category">-</div>
+                        </div>
+                        <div class="aqi-value actual">
+                            <h4>Actual AQI</h4>
+                            <div class="value" id="actual-aqi">-</div>
+                            <div class="category" id="actual-category">-</div>
+                        </div>
+                    </div>
+                    <div class="accuracy">
+                        <h4>Accuracy: <span id="accuracy-value">-</span></h4>
+                    </div>
+                </div>
+            </section>
+
+            <section class="info-section">
+                <h2>About AQI</h2>
+                <div class="aqi-categories">
+                    <div class="category good">0-50: Good</div>
+                    <div class="category moderate">51-100: Moderate</div>
+                    <div class="category unhealthy-sensitive">101-150: Unhealthy for Sensitive Groups</div>
+                    <div class="category unhealthy">151-200: Unhealthy</div>
+                    <div class="category very-unhealthy">201-300: Very Unhealthy</div>
+                    <div class="category hazardous">301-500: Hazardous</div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>AQI Prediction System &copy; 2025</p>
+        </footer>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

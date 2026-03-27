@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AQI Data Visualization</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .visualization-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .chart-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .chart-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .data-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .summary-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .summary-card h3 {
+            color: #007acc;
+            margin-bottom: 15px;
+        }
+
+        .summary-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .summary-label {
+            font-size: 1rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="visualization-container">
+        <header>
+            <h1>AQI Data Visualization</h1>
+            <p>Exploratory analysis of air quality data</p>
+        </header>
+
+        <main>
+            <section class="chart-container">
+                <h2>AQI Analysis Charts</h2>
+                <img src="../data/aqi_analysis.png" alt="AQI Analysis Visualization">
+            </section>
+
+            <section class="data-summary">
+                <div class="summary-card">
+                    <h3>Total Data Points</h3>
+                    <div class="summary-value">1000</div>
+                    <div class="summary-label">records analyzed</div>
+                </div>
+
+                <div class="summary-card">
+                    <h3>Average AQI</h3>
+                    <div class="summary-value">192</div>
+                    <div class="summary-label">unhealthy for sensitive groups</div>
+                </div>
+
+                <div class="summary-card">
+                    <h3>Data Parameters</h3>
+                    <div class="summary-value">7</div>
+                    <div class="summary-label">air quality indicators</div>
+                </div>
+
+                <div class="summary-card">
+                    <h3>Analysis Date</h3>
+                    <div class="summary-value">2025</div>
+                    <div class="summary-label">most recent data</div>
+                </div>
+            </section>
+
+            <section class="chart-container">
+                <h2>Data Insights</h2>
+                <div style="text-align: left; padding: 20px;">
+                    <h3>Key Findings:</h3>
+                    <ul>
+                        <li><strong>Strong Correlations:</strong> PM2.5 and PM10 show strong positive correlations with AQI values</li>
+                        <li><strong>Data Distribution:</strong> AQI values range from 38 to 328 with a mean of 192</li>
+                        <li><strong>Pollutant Patterns:</strong> NO2 and CO show consistent patterns with AQI fluctuations</li>
+                        <li><strong>Seasonal Trends:</strong> Data shows variation patterns that could be seasonal</li>
+                        <li><strong>Outlier Detection:</strong> 1 outlier identified and removed from the dataset</li>
+                    </ul>
+
+                    <h3>Feature Engineering:</h3>
+                    <ul>
+                        <li>Created pollution ratio features (pm25/pm10 ratio)</li>
+                        <li>Developed composite pollution index</li>
+                        <li>Added AQI category classification</li>
+                        <li>Handled missing values and outliers</li>
+                    </ul>
+
+                    <h3>Model Preparation:</h3>
+                    <ul>
+                        <li>Data standardized for machine learning algorithms</li>
+                        <li>Features selected for predictive modeling</li>
+                        <li>Dataset split for training and testing</li>
+                        <li>Ready for Random Forest regression modeling</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>AQI Prediction System &copy; 2025</p>
+        </footer>
+    </div>
+</body>
+</html>
