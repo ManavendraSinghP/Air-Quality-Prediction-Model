@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delhi AQI Predictor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="title">Delhi AQI Predictor</h1>
+            <p class="subtitle">Real-time air quality prediction using machine learning</p>
+        </header>
+
+        <main>
+            <section class="card api-section">
+                <h2>WAQI API Integration</h2>
+                <form id="api-form" class="form">
+                    <div class="form-group">
+                        <label for="token">WAQI API Token</label>
+                        <input type="password" id="token" placeholder="Enter your WAQI API token" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">Monitoring Station</label>
+                        <select id="location" required>
+                            <option value="">Select a Delhi monitoring station</option>
+                            <option value="Anand Vihar">Anand Vihar</option>
+                            <option value="Punjabi Bagh">Punjabi Bagh</option>
+                            <option value="ITO">ITO</option>
+                            <option value="RK Puram">RK Puram</option>
+                            <option value="Okhla">Okhla</option>
+                            <option value="Wazirpur">Wazirpur</option>
+                            <option value="Siri Fort">Siri Fort</option>
+                            <option value="Dwarka">Dwarka</option>
+                            <option value="Najafgarh">Najafgarh</option>
+                            <option value="Bawana">Bawana</option>
+                            <option value="Chandni Chowk">Chandni Chowk</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn primary">Predict AQI</button>
+                </form>
+            </section>
+
+            <section class="card manual-section">
+                <h2>Manual Prediction</h2>
+                <form id="manual-form" class="form">
+                    <div class="pollutants-grid">
+                        <div class="form-group">
+                            <label for="pm25">PM2.5 (μg/m³)</label>
+                            <input type="number" id="pm25" step="0.1" placeholder="Enter PM2.5 value">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pm10">PM10 (μg/m³)</label>
+                            <input type="number" id="pm10" step="0.1" placeholder="Enter PM10 value">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="so2">SO2 (μg/m³)</label>
+                            <input type="number" id="so2" step="0.1" placeholder="Enter SO2 value">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="no2">NO2 (μg/m³)</label>
+                            <input type="number" id="no2" step="0.1" placeholder="Enter NO2 value">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="co">CO (mg/m³)</label>
+                            <input type="number" id="co" step="0.1" placeholder="Enter CO value">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="o3">O3 (μg/m³)</label>
+                            <input type="number" id="o3" step="0.1" placeholder="Enter O3 value">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn secondary">Predict with Manual Inputs</button>
+                </form>
+            </section>
+
+            <section id="results" class="results-section hidden">
+                <h2>Prediction Results</h2>
+                <div class="results-container">
+                    <div class="result-card">
+                        <h3>Station</h3>
+                        <p id="station-name" class="result-value">-</p>
+                    </div>
+
+                    <div class="result-card">
+                        <h3>Predicted AQI</h3>
+                        <p id="predicted-aqi" class="result-value">-</p>
+                        <span id="predicted-category" class="category-badge"></span>
+                    </div>
+
+                    <div class="result-card">
+                        <h3>Actual AQI</h3>
+                        <p id="actual-aqi" class="result-value">-</p>
+                        <span id="actual-category" class="category-badge"></span>
+                    </div>
+                </div>
+
+                <div class="pollutants-display">
+                    <h3>Pollutant Levels</h3>
+                    <div class="pollutants-grid">
+                        <div class="pollutant-item">
+                            <span class="pollutant-label">PM2.5</span>
+                            <span id="display-pm25" class="pollutant-value">-</span>
+                        </div>
+                        <div class="pollutant-item">
+                            <span class="pollutant-label">PM10</span>
+                            <span id="display-pm10" class="pollutant-value">-</span>
+                        </div>
+                        <div class="pollutant-item">
+                            <span class="pollutant-label">SO2</span>
+                            <span id="display-so2" class="pollutant-value">-</span>
+                        </div>
+                        <div class="pollutant-item">
+                            <span class="pollutant-label">NO2</span>
+                            <span id="display-no2" class="pollutant-value">-</span>
+                        </div>
+                        <div class="pollutant-item">
+                            <span class="pollutant-label">CO</span>
+                            <span id="display-co" class="pollutant-value">-</span>
+                        </div>
+                        <div class="pollutant-item">
+                            <span class="pollutant-label">O3</span>
+                            <span id="display-o3" class="pollutant-value">-</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="error-message" class="error-section hidden">
+                <div class="error-content">
+                    <h3>Error Occurred</h3>
+                    <p id="error-text"></p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Delhi AQI Prediction System &copy; 2026</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
